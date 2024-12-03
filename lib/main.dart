@@ -6,13 +6,54 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shamir Demo',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English
+        Locale('it', ''), // Italian
+      ],
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+
+  static void setLocale(BuildContext context, Locale locale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(locale);
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      locale: _locale,
+      title: 'Shamir Demo',
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,6 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      MyApp.setLocale(context, locale);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +109,29 @@ class _MyHomePageState extends State<MyHomePage> {
               // Handle menu selection
             },
             itemBuilder: (BuildContext context) {
-              return {'Home', 'About', 'Contact'}.map((String choice) {
+              return {'Home', 'Encode', 'Decode'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
                 );
               }).toList();
             },
+          ),
+          PopupMenuButton<Locale>(
+            onSelected: _changeLanguage,
+            itemBuilder: (BuildContext context) {
+              return [
+                const PopupMenuItem<Locale>(
+                  value: Locale('en', ''),
+                  child: Text('English'),
+                ),
+                const PopupMenuItem<Locale>(
+                  value: Locale('it', ''),
+                  child: Text('Italiano'),
+                ),
+              ];
+            },
+            icon: const Icon(Icons.language),
           ),
         ],
       ),
