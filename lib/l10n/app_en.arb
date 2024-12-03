@@ -1,7 +1,10 @@
-
 {
   "@@locale": "en",
   "shamirArticleTitle": "Shamir Secret Sharing",
   "shamirArticleContent": "Shamir's Secret Sharing is an algorithm in cryptography created by Adi Shamir. It is a form of secret sharing, where a secret is divided into parts, giving each participant its own unique part.",
-  "footerText": "© 2023 Your Company. All rights reserved."
+  "footerText": "© 2023 Your Company. All rights reserved.",
+  "encodeTitle": "Encode",
+  "encodeContent": "This is the Encode section.",
+  "decodeTitle": "Decode",
+  "decodeContent": "This is the Decode section."
 }

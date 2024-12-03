@@ -97,6 +97,21 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _navigateToSection(String section) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        if (section == 'Encode') {
+          return const EncodePage();
+        } else if (section == 'Decode') {
+          return const DecodePage();
+        } else {
+          return const MyHomePage(title: 'Flutter Demo Home Page');
+        }
+      }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,9 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: <Widget>[
           PopupMenuButton<String>(
-            onSelected: (String value) {
-              // Handle menu selection
-            },
+            onSelected: _navigateToSection,
             itemBuilder: (BuildContext context) {
               return {'Home', 'Encode', 'Decode'}.map((String choice) {
                 return PopupMenuItem<String>(
@@ -166,6 +179,38 @@ class _MyHomePageState extends State<MyHomePage> {
             textAlign: TextAlign.center,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class EncodePage extends StatelessWidget {
+  const EncodePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.encodeTitle),
+      ),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.encodeContent),
+      ),
+    );
+  }
+}
+
+class DecodePage extends StatelessWidget {
+  const DecodePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.decodeTitle),
+      ),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.decodeContent),
       ),
     );
   }

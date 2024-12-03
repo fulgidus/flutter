@@ -1,7 +1,10 @@
-
 {
   "@@locale": "it",
   "shamirArticleTitle": "Condivisione Segreta di Shamir",
   "shamirArticleContent": "La Condivisione Segreta di Shamir è un algoritmo di crittografia creato da Adi Shamir. È una forma di condivisione segreta, dove un segreto è diviso in parti, dando a ciascun partecipante la propria parte unica.",
-  "footerText": "© 2023 La tua azienda. Tutti i diritti riservati."
+  "footerText": "© 2023 La tua azienda. Tutti i diritti riservati.",
+  "encodeTitle": "Codifica",
+  "encodeContent": "Questa è la sezione Codifica.",
+  "decodeTitle": "Decodifica",
+  "decodeContent": "Questa è la sezione Decodifica."
 }
