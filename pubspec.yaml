@@ -1,0 +1,33 @@
+name: flutter_sss
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.0.3
+  http: ^1.2.2
+  cupertino_icons: ^1.0.8
+  sss256: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  intl_utils: ^2.0.0
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+flutter_intl:
+  enabled: true
+  arb-dir: lib/l10n
+  template-arb-file: app_en.arb
+  output-localization-file: app_localizations.dart
